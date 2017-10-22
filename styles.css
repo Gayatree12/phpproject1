@@ -1,0 +1,19 @@
+
+  body {
+    background color: green;
+  }
+  
+  h1, h2 {
+    text-align: center;
+    color: black;
+  }
+  
+  tr:nth-child(even) {
+    background-color: LightGrey;
+  }
+  
+  th {
+    background-color: rgba(255, 99, 71, 0.5);
+  }
+  
+  
