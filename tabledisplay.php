@@ -7,7 +7,7 @@ class tabledisplay extends page {
   $row = 1;
   if(($handle = fopen($_GET['filename'],"r")) !== false) {
     echo '<table border="1">';
-    while(($getdata = fgetcsv($handle,",")) !== FALSE) {
+    while(($getdata = fgetcsv($handle,0,",")) !== FALSE) {
       $number = count($getdata);
       if($row == 1) {
         echo '<thead><tr>';
