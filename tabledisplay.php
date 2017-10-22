@@ -3,38 +3,25 @@
 class tabledisplay extends page {
 
   public static function get() {
-//reading and printing the entire contents of csv file  
+//reading and printing the entire contents of csv file 
   $row = 1;
-  if(($handle = fopen($_GET['filename'],"r")) !== false) {
-    echo '<table border="1">';
+  if(($handle = fopen($_GET['filename'],"r")) !== false) {  //opening a file
+    echo '<table border="3">';
     while(($getdata = fgetcsv($handle,0,",")) !== FALSE) {
       $number = count($getdata);
-      if($row == 1) {
-        echo '<thead><tr>';
-      }
-        else {
-          echo '<tr>';
-        }
+      
+      echo ($row==1)? '<thead><tr>' : '<tr>';
+
       for($col=0;$col<$number;$col++) {
-        $outputvalue = $getdata[$col];
-        
-        if($row==1) {
-          echo '<th>' . $outputvalue . '</th>';
-        }
-          else {
-              echo '<td>' . $outputvalue . '</td>';
-          }
+        $outputvalue = $getdata[$col];        
+        echo ($row==1)? '<th>' . $outputvalue . '</th>' : '<td>' . $outputvalue . '</td>'; 
       }
-      if($row==1) {
-        echo '</tr></thead><tbody>';
-      }
-      else {
-        echo '</tr>';
-      }
+      
+      echo ($row==1)?'</tr></thead><tbody>':'</tr>';
       $row++;
     } 
     echo '</tbody></table>';
-    fclose($handle);
+    fclose($handle);  //closing a file
   }
 }
 }
