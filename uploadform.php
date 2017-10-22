@@ -17,5 +17,6 @@ class uploadform extends page {
     $target_file = $target_dir . basename($_FILES["uploadfile"]["name"]);
     move_uploaded_file($_FILES["uploadfile"]["tmp_name"], $target_file);
     header('Location: index.php?page=tabledisplay&filename=' . $target_file);
+    header("Content-type: text/css");
   }
 }
