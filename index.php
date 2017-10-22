@@ -1,22 +1,21 @@
 <?php
-//to output error messages
-ini_set('display_errors', 'On');
-//error_reporting(E_ALL); //report all PHP errors; E_ALL is a constant
 
 class manageFiles {
 	public static function autoload($class) {
-		include $class . '.php';
+		include $class . '.php'; //including and evaluating the specified files
 	}
 }
 spl_autoload_register(array('manageFiles','autoload'));  //register multiple autoloader functions
-$obj = new main(); 
+
+$obj = new main(); //instantiating class main
+
 class main {
   public function __construct() {
   $pagerequest = 'uploadform';
-    if(isset($_REQUEST['page'])) {
+    if(isset($_REQUEST['page'])) { //determine if a variable is set 
       $pagerequest = $_REQUEST['page'];
     }
-    $page = new $pagerequest; //instantiation
+    $page = new $pagerequest; //instantiating the requested class:page
     if($_SERVER['REQUEST_METHOD'] == 'GET') {
     $page -> get();
     }
@@ -25,14 +24,13 @@ class main {
       }  
   } 
 }
+//declaring abstract methods; no actual implementation done here
 abstract class page {
   protected $myFile;
-  public function __construct() {
-    $this -> myFile .= '<html></body>';
+  public function __construct() {   
     $this -> myFile .= '<link rel="stylesheet" href="styles.css">';
   }
   public function __destruct() {
-    $this -> myFile .= '</html></body>';
     print($this -> myFile);
   }
 }
