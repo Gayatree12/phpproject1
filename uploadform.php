@@ -11,7 +11,7 @@ class uploadform extends page {
     $form .= '</form>';
     $this -> myFile .= $form;
   }
-  
+  //script to upload file
   public function post() {
     $target_dir = "uploads/";
     $target_file = $target_dir . basename($_FILES["uploadfile"]["name"]);
