@@ -14,6 +14,7 @@ class tabledisplay extends page {
 
       for($col=0;$col<$number;$col++) {
         $outputvalue = $getdata[$col];        
+        
         echo ($row==1)? '<th>' . $outputvalue . '</th>' : '<td>' . $outputvalue . '</td>'; 
       }
       
